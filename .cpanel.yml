@@ -1,22 +1,28 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/sishrdmy/public_html/sis-hrd.my.id
-    - /bin/mkdir -p $DEPLOYPATH
-    - /bin/cp -R app $DEPLOYPATH
-    - /bin/cp -R bootstrap $DEPLOYPATH
-    - /bin/cp -R config $DEPLOYPATH
-    - /bin/cp -R database $DEPLOYPATH
-    - /bin/cp -R lang $DEPLOYPATH
-    - /bin/cp -R public $DEPLOYPATH
-    - /bin/cp -R resources $DEPLOYPATH
-    - /bin/cp -R routes $DEPLOYPATH
-    - /bin/cp -R storage $DEPLOYPATH
-    - if [ -d vendor ]; then /bin/cp -R vendor $DEPLOYPATH; fi
-    - if [ -f artisan ]; then /bin/cp artisan $DEPLOYPATH; fi
-    - if [ -f composer.json ]; then /bin/cp composer.json $DEPLOYPATH; fi
-    - if [ -f composer.lock ]; then /bin/cp composer.lock $DEPLOYPATH; fi
-    - if [ -f package.json ]; then /bin/cp package.json $DEPLOYPATH; fi
-    - if [ -f package-lock.json ]; then /bin/cp package-lock.json $DEPLOYPATH; fi
-    - if [ -f vite.config.js ]; then /bin/cp vite.config.js $DEPLOYPATH; fi
-    - if [ -d public/build ]; then /bin/cp -R public/build $DEPLOYPATH/public; fi
+    - export APPPATH=/home/sishrdmy/apps/hrdsystem
+    - export PUBLICPATH=/home/sishrdmy/public_html
+    - /bin/mkdir -p $APPPATH
+    - /bin/mkdir -p $PUBLICPATH
+
+    - /bin/cp -R app $APPPATH
+    - /bin/cp -R bootstrap $APPPATH
+    - /bin/cp -R config $APPPATH
+    - /bin/cp -R database $APPPATH
+    - /bin/cp -R lang $APPPATH
+    - /bin/cp -R resources $APPPATH
+    - /bin/cp -R routes $APPPATH
+    - /bin/cp -R storage $APPPATH
+
+    - if [ -d vendor ]; then /bin/cp -R vendor $APPPATH; fi
+    - if [ -f artisan ]; then /bin/cp artisan $APPPATH; fi
+    - if [ -f composer.json ]; then /bin/cp composer.json $APPPATH; fi
+    - if [ -f composer.lock ]; then /bin/cp composer.lock $APPPATH; fi
+    - if [ -f .env.example ]; then /bin/cp .env.example $APPPATH; fi
+
+    - if [ -f public/index.php ]; then /bin/cp public/index.php $PUBLICPATH; fi
+    - if [ -f public/.htaccess ]; then /bin/cp public/.htaccess $PUBLICPATH; fi
+    - if [ -d public/build ]; then /bin/cp -R public/build $PUBLICPATH; fi
+    - if [ -f public/favicon.ico ]; then /bin/cp public/favicon.ico $PUBLICPATH; fi
+    - if [ -f public/robots.txt ]; then /bin/cp public/robots.txt $PUBLICPATH; fi
