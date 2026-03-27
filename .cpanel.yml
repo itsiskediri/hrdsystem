@@ -3,4 +3,20 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/sishrdmy/public_html/sis-hrd.my.id
     - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -R app $DEPLOYPATH
+    - /bin/cp -R bootstrap $DEPLOYPATH
+    - /bin/cp -R config $DEPLOYPATH
+    - /bin/cp -R database $DEPLOYPATH
+    - /bin/cp -R lang $DEPLOYPATH
     - /bin/cp -R public $DEPLOYPATH
+    - /bin/cp -R resources $DEPLOYPATH
+    - /bin/cp -R routes $DEPLOYPATH
+    - /bin/cp -R storage $DEPLOYPATH
+    - if [ -d vendor ]; then /bin/cp -R vendor $DEPLOYPATH; fi
+    - if [ -f artisan ]; then /bin/cp artisan $DEPLOYPATH; fi
+    - if [ -f composer.json ]; then /bin/cp composer.json $DEPLOYPATH; fi
+    - if [ -f composer.lock ]; then /bin/cp composer.lock $DEPLOYPATH; fi
+    - if [ -f package.json ]; then /bin/cp package.json $DEPLOYPATH; fi
+    - if [ -f package-lock.json ]; then /bin/cp package-lock.json $DEPLOYPATH; fi
+    - if [ -f vite.config.js ]; then /bin/cp vite.config.js $DEPLOYPATH; fi
+    - if [ -d public/build ]; then /bin/cp -R public/build $DEPLOYPATH/public; fi
